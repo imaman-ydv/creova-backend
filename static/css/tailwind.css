@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CUSTOM CSS VARIABLES
+   ============================================ */
+:root {
+    --color-black-pure: #000000;
+    --color-black-deep: #050505;
+    --color-black-soft: #0a0a0a;
+    --color-red-accent: #dc2626;
+    --color-red-bright: #ef4444;
+    --color-white: #ffffff;
+    --spacing-section: 6rem;
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: var(--color-black-pure);
+        color: var(--color-white);
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-black-deep);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* ============================================
+   HERO SECTION STYLES
+   ============================================ */
+.hero-section {
+    background-color: var(--color-black-pure);
+    position: relative;
+}
+
+/* Spotlight Glow Effect */
+.spotlight-glow {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 30%,
+        transparent 70%
+    );
+    filter: blur(40px);
+    z-index: 1;
+}
+
+/* Neon Red Accent Lines */
+.neon-line-left,
+.neon-line-right {
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-red-accent),
+        var(--color-red-accent),
+        transparent
+    );
+    box-shadow: 0 0 20px var(--color-red-accent),
+                0 0 40px rgba(220, 38, 38, 0.5);
+}
+
+.neon-line-left {
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--color-red-accent),
+        var(--color-red-accent)
+    );
+}
+
+.neon-line-right {
+    background: linear-gradient(
+        to left,
+        transparent,
+        var(--color-red-accent),
+        var(--color-red-accent)
+    );
+}
+
+/* Hero Title with Dramatic Styling */
+.hero-title {
+    font-family: 'Outfit', serif;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 40px rgba(220, 38, 38, 0.3),
+                 0 0 80px rgba(220, 38, 38, 0.2);
+}
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-sequence > * {
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) forwards;
+}
+
+.fade-in-sequence > *:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-1 {
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) forwards;
+    animation-delay: 0.5s;
+}
+
+.fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) forwards;
+    animation-delay: 0.8s;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s var(--transition-smooth);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+}
+
+.animate-scroll {
+    animation: scroll 1.5s ease-in-out infinite;
+}
+
+/* ============================================
+   FORM COMPONENTS
+   ============================================ */
+.form-container {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Radio Button Custom Styling */
+.radio-option input[type="radio"]:checked + .radio-card {
+    border-color: var(--color-red-accent);
+    background-color: rgba(220, 38, 38, 0.1);
+}
+
+.radio-option input[type="radio"]:checked + .radio-card .radio-indicator {
+    border-color: var(--color-red-accent);
+    background-color: var(--color-red-accent);
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.2);
+}
+
+/* Email Field Smooth Transition */
+.email-field-container {
+    transition: max-height 0.4s var(--transition-smooth),
+                opacity 0.4s var(--transition-smooth);
+}
+
+/* Input Focus States */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Checkbox Custom Styling */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--color-red-accent);
+    border-color: var(--color-red-accent);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.cta-button {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+        line-height: 0.95;
+    }
+
+    .neon-line-left,
+    .neon-line-right {
+        width: 60px;
+        height: 1px;
+    }
+
+    .spotlight-glow {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .product-tagline p:first-child {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.backdrop-blur-strong {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.text-shadow-glow {
+    text-shadow: 0 0 20px currentColor;
+}
+
+.border-glow {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+}
