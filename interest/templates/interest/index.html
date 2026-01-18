@@ -12,6 +12,15 @@
     <script type="module" async
         src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fcreovastu1126back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"></script>
     <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9PKGJP3E4Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9PKGJP3E4Z');
+</script>
 </head>
 
 <body class="antialiased selection:bg-red-600/30 selection:text-white">
@@ -94,7 +103,7 @@
                 </p>
             </div>
 
-            <form method="POST" action="{% url 'submit_interest' %}"
+            <form method="POST" action="{% url 'submit_interest' %}" id="interestForm"
                 class="form-container p-8 md:p-12 bg-white/[0.02] backdrop-blur-md border border-white/10 rounded-3xl reveal-on-scroll">
                 {% csrf_token %}
 
@@ -179,6 +188,7 @@
                     </div>
                 </div>
 
+                
                 <!-- Feedback Textarea -->
                 <div class="mb-10">
                     <label for="feedback"
@@ -204,6 +214,21 @@
             </form>
         </div>
     </section>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("interestForm");
+
+    if (form) {
+      form.addEventListener("submit", function () {
+        gtag('event', 'form_submit', {
+          event_category: 'launch',
+          event_label: 'interest_form'
+        });
+      });
+    }
+  });
+</script>
+
 
     <!-- Brand Promise Section -->
     <section class="py-20 px-6 bg-black border-t border-white/5">
