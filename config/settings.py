@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',   # pehle postgres hi use karo
+        'NAME': 'creova_db',   # pehle postgres hi use karo
         'USER': 'blady',
         'PASSWORD': 'Am@n6920',
         'HOST': 'creova-db-prod.postgres.database.azure.com',
