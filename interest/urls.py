@@ -1,7 +1,7 @@
 from django.urls import path
-from . import views
+from .views import home, submit_interest
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("submit/", views.submit_interest, name="submit_interest"),
+    path('', home),
+    path('submit/', submit_interest),
 ]
